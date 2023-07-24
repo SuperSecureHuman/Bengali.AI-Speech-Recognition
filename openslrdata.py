@@ -1,5 +1,6 @@
 import os
-from datasets import Dataset
+from datasets import Dataset as HFDataset, Audio
+
 
 # Path to the root of the dataset
 root_path = "./openslr/"
@@ -33,21 +34,9 @@ def load_dataset(root_path):
     }
 
     # Wrap the dictionary in a Hugging Face Dataset object
-    dataset = Dataset.from_dict(dataset_dict)
-
-    from datasets import Dataset, Audio
-
-    # Assuming you already have the lists of file paths, folder names, and texts from your TSV file
-    dataset_dict = {
-        "file_path": file_paths,
-        "folder_name": folder_names,
-        "text": texts,
-    }
-
-    # Wrap the dictionary in a Hugging Face Dataset object
-    dataset = Dataset.from_dict(dataset_dict)
+    dataset_output = HFDataset.from_dict(dataset_dict)
 
     # Cast the 'file_path' column to the 'Audio' feature
-    dataset = dataset.cast_column("file_path", Audio())
+    dataset = dataset_output.cast_column("file_path", Audio())
 
     return dataset
