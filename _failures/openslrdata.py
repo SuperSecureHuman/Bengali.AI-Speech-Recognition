@@ -40,3 +40,8 @@ def load_dataset(root_path):
     dataset = dataset_output.cast_column("file_path", Audio())
 
     return dataset
+
+dataset = load_dataset(root_path)
+
+# save the dataset - folder dataset
+dataset.save_to_disk("./dataset", max_shard_size="200MB", num_proc=8)

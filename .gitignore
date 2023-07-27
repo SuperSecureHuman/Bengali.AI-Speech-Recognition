@@ -1,2 +1,4 @@
 openslr/
 __pycache__/
+dataset/
+whisper-small-bn/
