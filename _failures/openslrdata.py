@@ -3,11 +3,11 @@ from datasets import Dataset as HFDataset, Audio
 
 
 # Path to the root of the dataset
-root_path = "./openslr/"
+root_path = "/home/venom/repo/Bengali.AI-Speech-Recognition/openslr"
 
 def load_dataset(root_path):
     # Read the TSV file and extract data
-    tsv_file_path = os.path.join(root_path, "data.tsv")
+    tsv_file_path = os.path.join(root_path, "utt_spk_text.tsv")
     with open(tsv_file_path, "r", encoding="utf-8") as tsv_file:
         lines = tsv_file.readlines()
 
